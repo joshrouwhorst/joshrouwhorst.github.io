@@ -1,0 +1,102 @@
+@use 'sass:math';
+@use './colors.scss';
+
+@mixin opticBlur($textColor, $color1, $color2, $color3, $distance) {
+    @if ($distance > 0px) {
+        text-shadow:
+            0 0 $distance transparentize($textColor, 1),
+
+            calc($distance * 2) $distance calc($distance / 2) transparentize($color1, 0.5),
+            0 calc(0px - $distance) calc($distance / 2) transparentize($color2, 0.5),
+            calc(0px - $distance) $distance calc($distance / 2) transparentize($color3, 0.5),
+
+            // Layer 2
+            calc($distance * 4) calc($distance * 2) $distance transparentize($color1, 0.75),
+            0 calc(0px - $distance * 2) $distance transparentize($color2, 0.75),
+            calc(0px - $distance * 2) calc($distance * 2) $distance transparentize($color3, 0.75)
+    }
+
+    @else {
+        $distance: math.abs($distance);
+        text-shadow:
+            0 0 $distance transparentize($textColor, 0),
+
+            0 0 $distance transparentize($textColor, 0),
+            0 0 $distance transparentize($textColor, 0),
+            0 0 $distance transparentize($textColor, 0),
+
+            // Layer 2
+            0 0 $distance transparentize($color1, 0),
+            0 0 $distance transparentize($color2, 0),
+            0 0 $distance transparentize($color3, 0)
+    }
+}
+
+$text: colors.$white;
+$clr1: colors.$neon-pink;
+$clr2: colors.$neon-yellow;
+$clr3: colors.$neon-blue;
+
+// @keyframes autofocus {
+//     0% {
+//         @include opticBlur($text, $clr1, $clr2, $clr3, 25px);
+//     }
+
+//     50% {
+//         @include opticBlur($text, $clr1, $clr2, $clr3, 1px);
+//     }
+
+//     51% {
+//         @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+//     }
+
+//     100% {
+//         @include opticBlur($text, $clr1, $clr2, $clr3, -25px);
+//     }
+// }
+
+@keyframes autofocus {
+    0% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    // 1% {
+    //     @include opticBlur($text, $clr1, $clr2, $clr3, 1px);
+    // }
+
+    25% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 25px);
+    }
+
+    // 40% {
+    //     @include opticBlur($text, $clr1, $clr2, $clr3, 1px);
+    // }
+
+    41% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    50% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, -25px);
+    }
+
+    60% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    75% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 15px);
+    }
+
+    // 99% {
+    //     @include opticBlur($text, $clr1, $clr2, $clr3, 1px);
+    // }
+
+    85% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    100% {
+        @include opticBlur($text, $clr1, $clr2, $clr3, 0px);
+    }
+}

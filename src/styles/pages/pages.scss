@@ -1,0 +1,46 @@
+@use '../vars.scss';
+
+.page {
+    .saturate-img {
+        filter: saturate(0);
+    }
+
+    &:hover {
+        .saturate-img {
+            filter: saturate(1);
+        }
+    }
+
+    img {
+        border-radius: 0.4rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    img[align="left"],
+    img[align="right"] {
+        float: none;
+    }
+
+    @media (min-width: vars.$tablet) {
+        img {
+            border-radius: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        img[align="left"],
+        img[align="right"] {
+            max-width: 35%;
+        }
+
+        img[align="left"] {
+            float: left;
+            margin-right: 1rem;
+        }
+
+        img[align="right"] {
+            float: right;
+            margin-left: 1rem;
+        }
+    }
+}

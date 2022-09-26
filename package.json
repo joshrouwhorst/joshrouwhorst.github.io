@@ -1,0 +1,42 @@
+{
+  "name": "joshrouwhorst",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Josh Rouwhorst Website",
+  "author": "Josh Rouwhorst",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby clean && gatsby develop",
+    "cms": "npx netlify-cms-proxy-server",
+    "build": "gatsby clean && gatsby build",
+    "serve": "gatsby clean && gatsby build && gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "gatsby": "^4.15.2",
+    "gatsby-plugin-image": "^2.16.1",
+    "gatsby-plugin-manifest": "^4.16.0",
+    "gatsby-plugin-netlify-cms": "^6.16.0",
+    "gatsby-plugin-performance-metrics": "^1.0.1",
+    "gatsby-plugin-react-helmet": "^5.16.0",
+    "gatsby-plugin-sass": "^5.16.0",
+    "gatsby-plugin-sharp": "^4.16.1",
+    "gatsby-plugin-sitemap": "^5.16.0",
+    "gatsby-source-filesystem": "^4.16.0",
+    "gatsby-transformer-remark": "^5.16.0",
+    "gatsby-transformer-sharp": "^4.16.0",
+    "netlify-cms-app": "^2.15.72",
+    "qbp": "^3.1.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.52.3"
+  },
+  "devDependencies": {
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.27"
+  }
+}

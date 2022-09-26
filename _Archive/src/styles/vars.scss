@@ -1,0 +1,42 @@
+$blue: rgb(0, 213, 255);
+$green: rgb(25, 255, 148);
+$red: rgb(255, 0, 123);
+
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$gray: darken($white, 60%);
+
+// Breakpoints
+$xs: 321px;
+$sm: 769px;
+$lg: 1025px;
+
+$maxWidth: $lg;
+
+// Globals
+$borderRadius: 0.5em;
+$mobileGutter: 2rem;
+
+$linkColor: rgb(0, 153, 255);
+
+// Navigation
+$navLinkBg: transparent;
+$navLinkBgHover: $black;
+$navLinkFont: $black;
+$navLinkFontHover: $blue;
+$navLinkAnimationDuration: 0.5s;
+
+$navHeadingColor: $gray;
+
+// NavLinks
+$navLinkBarColor1: $black;
+$navLinkBarColor2: $blue;
+
+// Forms
+$buttonBgColor: $white;
+$buttonColor: $black;
+
+// Tags
+$tagBg: $white;
+$tagColor: $black;
+$tagBorder: $black;

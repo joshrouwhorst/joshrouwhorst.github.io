@@ -1,0 +1,70 @@
+@use 'sass:math';
+@use './colors.scss';
+
+@mixin stranger($textColor, $color1, $color2, $color3, $stage) {
+    @if ($transparency < 0.5) {
+        text-shadow:
+            0 0 2px transparentize($textColor, $transparency),
+            -1px 1px 2px transparentize($color1, 0)
+    }
+
+    @else {
+        text-shadow:
+            0 0 2px transparentize($textColor, 1),
+            -1px 1px 2px transparentize($color1, $transparency)
+    }
+}
+
+@mixin strangerDark($textColor, $color1) {
+    text-shadow:
+        0 0 2px transparentize($textColor, 1),
+        -1px 1px 2px transparentize($color1, 1)
+}
+
+@mixin strangerHalf($textColor, $color1) {
+    text-shadow:
+        0 0 2px transparentize($textColor, 1),
+        -1px 1px 2px transparentize($color1, 0.1)
+}
+
+@mixin strangerFull($textColor, $color1) {
+    text-shadow:
+        0 0 2px transparentize($textColor, 0.1),
+        -1px 1px 2px transparentize($color1, 0)
+}
+
+$text: colors.$white;
+$clr1: #F00;
+// $clr1: colors.$neon-pink;
+// $clr2: colors.$neon-yellow;
+// $clr3: colors.$neon-blue;
+
+@keyframes strangerThings {
+    0% {
+        @include strangerDark($text, $clr1);
+    }
+
+    5% {
+        @include strangerHalf($text, $clr1);
+    }
+
+    10% {
+        @include strangerFull($text, $clr1);
+    }
+
+    70% {
+        @include strangerFull($text, $clr1);
+    }
+
+    80% {
+        @include strangerHalf($text, $clr1);
+    }
+
+    90% {
+        @include strangerDark($text, $clr1);
+    }
+
+    100% {
+        @include strangerDark($text, $clr1);
+    }
+}

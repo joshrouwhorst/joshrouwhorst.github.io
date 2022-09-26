@@ -1,0 +1,46 @@
+$blue: rgb(0, 208, 255);
+$green: rgb(25, 255, 148);
+$yellow: rgb(195, 255, 0);
+$red: rgb(255, 0, 123);
+
+$white: rgb(255, 255, 255);
+$black: rgb(30, 30, 30);
+$gray: darken($white, 60%);
+
+// Breakpoints
+$mobileMedium: 320px;
+$mobileLarge: 375px;
+$tablet: 425px;
+$laptop: 768px;
+$laptopLarge: 1024px;
+$desktopLarge: 1440px;
+
+$maxWidth: $laptopLarge;
+
+// Globals
+$borderRadius: 0.5em;
+$mobileGutter: 2rem;
+
+$linkColor: rgb(0, 101, 252);
+
+// Navigation
+$navLinkBg: transparent;
+$navLinkBgHover: $black;
+$navLinkFont: $black;
+$navLinkFontHover: $blue;
+$navLinkAnimationDuration: 0.5s;
+
+$navHeadingColor: $gray;
+
+// NavLinks
+$navLinkBarColor1: $black;
+$navLinkBarColor2: $blue;
+
+// Forms
+$buttonBgColor: $white;
+$buttonColor: $black;
+
+// Tags
+$tagBg: $white;
+$tagColor: $black;
+$tagBorder: $black;

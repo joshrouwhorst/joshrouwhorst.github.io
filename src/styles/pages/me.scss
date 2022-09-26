@@ -1,0 +1,15 @@
+@use '../vars.scss';
+
+.josh-img {
+    float: left;
+    width: 35%;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+    filter: saturate(0);
+}
+
+.about-me.main-content:hover {
+    .josh-img {
+        filter: saturate(1);
+    }
+}

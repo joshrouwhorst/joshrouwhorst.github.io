@@ -1,0 +1,228 @@
+@use './vars.scss';
+
+$mobileGutter: vars.$mobileGutter;
+
+@mixin anibar($color, $width) {
+    width: $width;
+    opacity: 1;
+    background-color: $color;
+}
+
+@keyframes anibarYellow {
+    0% {
+        @include anibar(vars.$black, 0%)
+    }
+
+    100% {
+        @include anibar(vars.$yellow, 100%)
+    }
+}
+
+@keyframes anibarGreen {
+    0% {
+        @include anibar(vars.$black, 0%)
+    }
+
+    100% {
+        @include anibar(vars.$green, 100%)
+    }
+}
+
+@keyframes anibarRed {
+    0% {
+        @include anibar(vars.$black, 0%)
+    }
+
+    100% {
+        @include anibar(vars.$red, 100%)
+    }
+}
+
+@keyframes anibarBlue {
+    0% {
+        @include anibar(vars.$black, 0%)
+    }
+
+    100% {
+        @include anibar(vars.$blue, 100%)
+    }
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.primary-navigation {
+    ul {
+        list-style: none;
+
+        li {
+            display: block;
+
+            &.header {
+                font-size: 0.9rem;
+                font-weight: bold;
+                margin-top: 1rem;
+                text-transform: uppercase;
+                color: vars.$navHeadingColor;
+            }
+
+            a,
+            a:link,
+            a:visited {
+                display: block;
+                text-decoration: none;
+                background-color: vars.$navLinkBg;
+                padding: 0.5rem 0;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: vars.$navLinkFont;
+                transition-duration: vars.$navLinkAnimationDuration;
+            }
+        }
+    }
+
+    .nav-link {
+        display: block;
+
+        .anibar {
+            background-color: vars.$navLinkBg;
+
+            .anibar-bg {
+                height: 2px;
+            }
+        }
+
+        &:hover {
+            .anibar {
+                background-color: vars.$navLinkBg;
+            }
+
+            .anibar-bg {
+                animation-duration: vars.$navLinkAnimationDuration;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+            }
+
+            &.anibar-red {
+                .anibar-bg {
+                    animation-name: anibarRed;
+                }
+
+                a,
+                a:link,
+                a:visited {
+                    color: vars.$red;
+                }
+            }
+
+            &.anibar-yellow {
+                .anibar-bg {
+                    animation-name: anibarYellow;
+                }
+
+                a,
+                a:link,
+                a:visited {
+                    color: vars.$yellow;
+                }
+            }
+
+            &.anibar-green {
+                .anibar-bg {
+                    animation-name: anibarGreen;
+                }
+
+                a,
+                a:link,
+                a:visited {
+                    color: vars.$green;
+                }
+            }
+
+            &.anibar-blue {
+                .anibar-bg {
+                    animation-name: anibarBlue;
+                }
+
+                a,
+                a:link,
+                a:visited {
+                    color: vars.$blue;
+                }
+            }
+
+            a,
+            a:link,
+            a:visited {
+                text-decoration: none;
+                background-color: vars.$navLinkBgHover;
+                padding: 0.5rem 1rem;
+            }
+        }
+    }
+}
+
+// Mobile Nav
+@media (max-width: calc(vars.$laptop - 1px)) {
+    .primary-navigation {
+        position: fixed;
+        inset: 0 30% 0 0;
+        z-index: 8999;
+        padding: min(20vh, 6em) $mobileGutter 0 $mobileGutter;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 82%, rgba(255, 255, 255, 0) 100%);
+        transform: translateX(-100%);
+
+        &[data-visible="true"] {
+            transform: translateX(0);
+        }
+    }
+
+    @supports (backdrop-filter: blur(0.5rem)) {
+        .primary-navigation {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(0.5rem);
+        }
+    }
+
+    button.mobile-nav-toggle {
+        position: absolute;
+        width: fit-content;
+        aspect-ratio: 1;
+        top: 2rem;
+        left: $mobileGutter;
+        z-index: 9999;
+        display: block;
+        //border: 1px solid red;
+        border: 0;
+        background-color: transparent;
+        color: vars.$black;
+        padding: 0;
+
+        font-size: 2rem;
+        line-height: 2rem;
+
+        &:active {
+            background-color: transparent;
+            color: vars.$blue;
+        }
+
+        &:hover {
+            background-color: transparent;
+            color: vars.$black;
+        }
+
+        &[aria-expanded="true"] {
+            position: fixed;
+        }
+    }
+}
+
+// Desktop Nav
+@media (min-width: vars.$tablet) {
+    .primary-navigation {
+        padding-right: 1rem;
+    }
+}

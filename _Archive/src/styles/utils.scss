@@ -1,0 +1,70 @@
+@use './vars.scss';
+
+@media (min-width: vars.$sm) {
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+
+        &>* {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .col {
+            flex: 1 0 0;
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+
+            &:first-of-type {
+                margin-left: 0;
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        &.align-center {
+            align-items: center;
+        }
+    }
+}
+
+.columns {
+    columns: 12ch 2;
+    gap: 1em;
+
+    &>div {
+        margin-bottom: 0.5em;
+    }
+}
+
+@media (min-width: vars.$sm) {
+    .columns {
+        gap: 3em;
+    }
+}
+
+.tech-specs {
+    margin-left: 1em;
+    margin-bottom: 1em;
+    padding: 2em;
+    background-color: vars.$black;
+    color: vars.$white;
+    width: fit-content;
+    float: right;
+    border-radius: vars.$borderRadius;
+
+    ul {
+        list-style: none;
+
+        li {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .label {
+        font-weight: bold;
+    }
+}

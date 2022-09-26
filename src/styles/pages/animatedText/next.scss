@@ -1,0 +1,116 @@
+@import './colors.scss';
+
+$grad1: linear-gradient(90deg, $neon-yellow, $neon-blue);
+$grad2: linear-gradient(90deg, $neon-blue, $neon-pink);
+
+@mixin next-step-prev ($distance, $spread, $alpha, $rotate) {
+    transform: rotate($rotate);
+    text-shadow:
+        0 0 $spread rgba($black, $alpha),
+
+        0 ((-$distance) * 2) ($spread * 4) $neon-yellow,
+        0 (-$distance) $spread $neon-yellow,
+        0 0 ($spread * 2) $neon-yellow,
+
+        ((-$distance) * 2) ($distance * 2) ($spread * 4) $neon-blue,
+        (-$distance) ($distance) $spread $neon-blue,
+        -1px 1px ($spread * 2) $neon-blue,
+
+        ($distance * 2) ($distance * 2) ($spread * 4) $neon-pink,
+        $distance $distance $spread $neon-pink,
+        1px 1px ($spread * 2) $neon-pink;
+}
+
+@mixin next-step ($distance, $spread, $alpha, $rotate, $font) {
+    transform: rotate($rotate);
+    font-size: $font;
+    text-shadow:
+        0 0 calc($spread / 2) rgba($white, $alpha),
+        0 (-$distance * 2) ($spread * 4) $neon-yellow,
+        0 (-$distance) $spread $neon-yellow,
+        //0 0 ($spread * 2) $neon-yellow,
+        (-$distance * 2) ($distance * 2) ($spread * 4) $neon-blue,
+        (-$distance) ($distance) $spread $neon-blue,
+        -1px 1px ($spread * 2) $neon-blue,
+        ($distance * 2) ($distance * 2) ($spread * 4) $neon-pink,
+        $distance $distance $spread $neon-pink,
+        //1px 1px ($spread * 2) $neon-pink,
+}
+
+@mixin next-step-bg ($color1, $color2) {
+    background: linear-gradient(45deg, $color1, $color2);
+}
+
+$numOfSteps: 15;
+$increment: calc(100 / $numOfSteps);
+$randomDiff: floor($increment);
+
+@keyframes next {
+    @for $i from 1 through $numOfSteps {
+        $rand1: random(100);
+        $rand2: random(5);
+        $dist: calc($rand1 / 3) * 1px;
+        $font: calc($rand1 / 100) * 4em+4em;
+        $sprd: $rand2 * 1px;
+        //$sprd: (1 - ($i / $numOfSteps)) * 20px;
+        $trans: (0.5 - calc($rand1 / 100)) * 45deg;
+        $alph: 1 - calc($rand1 / 100);
+        //$alph: (random(2) - 1);
+
+        @if $i ==$numOfSteps {
+
+            0%,
+            100% {
+                @include next-step($dist, $sprd, $alph, 0deg, 8em);
+            }
+        }
+
+        @else {
+            $thisIncrement: calc(random($randomDiff) - calc($randomDiff / 2));
+            $frame: ($increment * calc($i - 1))+$thisIncrement;
+            $frame: $frame * 1%;
+
+            @if $frame < 0 {
+                $frame: 0%;
+            }
+
+            #{$frame} {
+                @include next-step($dist, $sprd, $alph, $trans, $font);
+            }
+        }
+    }
+}
+
+@keyframes next-bg {
+    @for $i from 1 through $numOfSteps {
+        $color1: $neon-yellow;
+        $color2: $neon-blue;
+
+        @if $i % 2==0 {
+            $color1: $neon-blue;
+            $color2: $neon-pink;
+        }
+
+        @if $i ==$numOfSteps {
+
+            0%,
+            100% {
+                @include next-step-bg($color1, $color2);
+            }
+        }
+
+        @else {
+            $thisIncrement: calc(random($randomDiff) - calc($randomDiff / 2));
+            $frame: ($increment * calc($i - 1))+$thisIncrement;
+            $frame: $frame * 1%;
+
+            @if $frame < 0 {
+                $frame: 0%;
+            }
+
+            #{$frame} {
+                @include next-step-bg($color1, $color2);
+            }
+        }
+    }
+}

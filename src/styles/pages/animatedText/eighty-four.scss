@@ -1,0 +1,57 @@
+@import './colors.scss';
+
+@mixin trippy ($distance, $spread, $alpha) {
+    text-shadow:
+        0 0 $spread rgba($white, $alpha),
+        0 (-$distance * 2) ($spread * 4) $neon-yellow,
+        0 (-$distance) $spread $neon-yellow,
+        //0 0 ($spread * 2) $neon-yellow,
+        (-$distance * 2) ($distance * 2) ($spread * 4) $neon-blue,
+        (-$distance) ($distance) $spread $neon-blue,
+        //-1px 1px ($spread * 2) $neon-blue,
+        ($distance * 2) ($distance * 2) ($spread * 4) $neon-pink,
+        $distance $distance $spread $neon-pink,
+        //1px 1px ($spread * 2) $neon-pink,
+}
+
+@keyframes eighty-four-repeat {
+    0% {
+        transform: rotate(0);
+        @include trippy(5px, 5px, 1);
+    }
+
+    50% {
+        font-size: 0em;
+        @include trippy(100px, 80px, 0);
+    }
+
+    80% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+        @include trippy(5px, 5px, 1);
+    }
+}
+
+@mixin eighty-four-final () {
+    transform: rotate(0deg);
+    @include trippy(5px, 5px, 1);
+}
+
+@keyframes eighty-four {
+    0% {
+        transform: rotate(-180deg);
+        font-size: 0em;
+        @include trippy(100px, 80px, 0);
+    }
+
+    40% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        @include eighty-four-final();
+    }
+}

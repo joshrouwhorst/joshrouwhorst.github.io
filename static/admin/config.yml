@@ -1,0 +1,78 @@
+backend:
+  name: github
+  repo: joshrouwhorst/website
+  branch: main
+local_backend: true
+
+media_folder: static/assets
+public_folder: /assets
+collections:
+  - name: site_settings
+    label: "Site Settings"
+    files:
+      - name: basic_info
+        label: "Basic Info"
+        file: src/cms/basic_info.json
+        fields:
+          - { label: Site Title, name: title }
+          - { label: Sub Title, name: subTitle }
+          - { label: Meta Description, name: description }
+      - name: nav
+        label: "Navigation"
+        file: src/cms/navigation.json
+        fields:
+          - label: Links
+            name: links
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name }
+              - { label: URL, name: url }
+  - name: project
+    label: Projects
+    folder: src/projects
+    create: true
+    fields:
+      - name: ordinal
+        label: Ordinal
+        hint: Can be any integer
+        required: false
+      - name: showInNav
+        label: Show In Nav?
+        widget: boolean
+        required: false
+      - { name: path, label: Path }
+      - { name: title, label: Title }
+      - { name: projectUrl, label: Project URL, required: false }
+      - name: openInNewTab
+        label: Open In New Tab?
+        widget: boolean
+        required: false
+      - name: technologies
+        label: Technologies
+        hint: Use a comma separated list
+        required: false
+      - { name: body, label: Body, widget: markdown, required: false }
+  - name: page
+    label: Pages
+    folder: src/pages/markdown
+    create: true
+    fields:
+      - name: ordinal
+        label: Ordinal
+        hint: Can be any integer
+        required: false
+      - name: showInNav
+        label: Show In Nav?
+        widget: boolean
+        required: false
+      - name: hideHeader
+        label: Hide Header?
+        hint: This hides the heading displaying the 'Title' field. In case you want to add your own heading in the body.
+        widget: boolean
+        required: false
+      - name: path
+        label: Path
+        hint: To set this as the root page of the site, set this to 'home'.
+      - { name: title, label: Title }
+      - { name: body, label: Body, widget: markdown, required: false }

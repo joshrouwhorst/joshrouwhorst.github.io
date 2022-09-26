@@ -1,0 +1,151 @@
+@use './vars.scss';
+
+$mobileGutter: vars.$mobileGutter;
+
+@keyframes anibar {
+    0% {
+        width: 0%;
+        opacity: 1;
+        background-color: vars.$navLinkBarColor1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
+        background-color: vars.$navLinkBarColor2;
+    }
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.primary-navigation {
+    ul {
+        list-style: none;
+
+        li {
+            display: block;
+
+            &.header {
+                font-size: 0.9rem;
+                font-weight: bold;
+                margin-top: 1rem;
+                text-transform: uppercase;
+                color: vars.$navHeadingColor;
+            }
+
+            a,
+            a:link,
+            a:visited {
+                display: block;
+                text-decoration: none;
+                background-color: vars.$navLinkBg;
+                padding: 0.5rem 0;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: vars.$navLinkFont;
+                transition-duration: vars.$navLinkAnimationDuration;
+            }
+        }
+    }
+
+    .nav-link {
+        display: block;
+
+
+        .anibar {
+            background-color: vars.$navLinkBg;
+
+            .anibar-bg {
+                height: 2px;
+            }
+        }
+
+        &:hover {
+            .anibar {
+                background-color: vars.$navLinkBg;
+            }
+
+            .anibar-bg {
+                animation-name: anibar;
+                animation-duration: vars.$navLinkAnimationDuration;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+            }
+
+            a,
+            a:link,
+            a:visited {
+                text-decoration: none;
+                background-color: vars.$navLinkBgHover;
+                color: vars.$navLinkFontHover;
+                padding: 0.5rem 1rem;
+            }
+        }
+    }
+}
+
+// Mobile Nav
+@media (max-width: (vars.$sm - 1)) {
+    .primary-navigation {
+        position: fixed;
+        inset: 0 30% 0 0;
+        z-index: 8999;
+        padding: min(20vh, 6em) $mobileGutter 0 $mobileGutter;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 82%, rgba(255, 255, 255, 0) 100%);
+        transform: translateX(-100%);
+
+        &[data-visible="true"] {
+            transform: translateX(0);
+        }
+    }
+
+    @supports (backdrop-filter: blur(0.5rem)) {
+        .primary-navigation {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(0.5rem);
+        }
+    }
+
+    button.mobile-nav-toggle {
+        position: absolute;
+        width: fit-content;
+        aspect-ratio: 1;
+        top: 2rem;
+        left: $mobileGutter;
+        z-index: 9999;
+        display: block;
+        //border: 1px solid red;
+        border: 0;
+        background-color: transparent;
+        color: vars.$black;
+        padding: 0;
+
+        font-size: 2rem;
+        line-height: 2rem;
+
+        &:active {
+            background-color: transparent;
+            color: vars.$blue;
+        }
+
+        &:hover {
+            background-color: transparent;
+            color: vars.$black;
+        }
+
+        &[aria-expanded="true"] {
+            position: fixed;
+        }
+    }
+}
+
+// Desktop Nav
+@media (min-width: vars.$sm) {
+    .primary-navigation {
+        padding-right: 1rem;
+    }
+}

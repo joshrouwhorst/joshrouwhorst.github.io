@@ -1,0 +1,40 @@
+@use '../vars.scss';
+
+.tech-specs {
+    margin: 1em 0;
+    padding: 2em;
+    background-color: vars.$black;
+    color: vars.$white;
+    border-radius: vars.$borderRadius;
+    display: block;
+    //width: fit-content;
+    max-width: 100%;
+
+    .content-wrapper {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    ul {
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .label {
+        font-weight: bold;
+    }
+
+    @media (min-width: vars.$tablet) {
+        margin-left: 1em;
+        margin-bottom: 1em;
+        float: right;
+
+        .content-wrapper {
+            width: initial;
+            margin: 0;
+        }
+    }
+}

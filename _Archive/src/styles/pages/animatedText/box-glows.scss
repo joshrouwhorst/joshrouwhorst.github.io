@@ -1,0 +1,35 @@
+@import './colors';
+
+@keyframes box-glow-primary {
+    0% {
+        box-shadow: 0 0 5px $neon-pink;
+        text-shadow: 0 0 5px $neon-pink;
+    }
+
+    50% {
+        box-shadow: 0 0 15px $neon-pink;
+        text-shadow: 0 0 15px $neon-pink;
+    }
+
+    100% {
+        box-shadow: 0 0 5px $neon-pink;
+        text-shadow: 0 0 5px $neon-pink;
+    }
+}
+
+@keyframes box-glow-secondary {
+    0% {
+        box-shadow: 0 0 5px $neon-blue;
+        text-shadow: 0 0 5px $neon-blue;
+    }
+
+    50% {
+        box-shadow: 0 0 15px $neon-blue;
+        text-shadow: 0 0 15px $neon-blue;
+    }
+
+    100% {
+        box-shadow: 0 0 5px $neon-blue;
+        text-shadow: 0 0 5px $neon-blue;
+    }
+}

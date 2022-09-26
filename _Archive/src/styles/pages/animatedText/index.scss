@@ -1,0 +1,91 @@
+@use './random-focus.scss';
+@use './box-glows.scss';
+@use './eighty-four.scss';
+@use './auto-focus.scss';
+@use './next.scss';
+@use './colors.scss';
+@use './color-separation.scss';
+
+body.animatedtext {
+    background-color: colors.$black;
+    overflow: hidden;
+    position: relative;
+
+    &.white-background {
+        background-color: colors.$white;
+
+        .animation-info {
+            color: colors.$black;
+        }
+    }
+
+    #___gatsby {
+        overflow: hidden;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .eighty-four {
+        animation: eighty-four-repeat 10s ease 0s infinite normal;
+    }
+
+    .randomfocus {
+        animation: randomfocus 5s ease 0s infinite normal;
+    }
+
+    .autofocus {
+        animation: autofocus 3s ease-in-out 0s infinite normal;
+    }
+
+    .color-separation-horizontal {
+        animation: colorSeparationHorizontal 5s ease 0s infinite normal;
+    }
+
+    .next {
+        animation: next 15s ease 0s infinite normal;
+    }
+
+    .wrapper {
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 8em;
+        text-align: center;
+        color: transparent;
+        font-weight: 900;
+        font-style: italic;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .animation-info {
+        position: absolute;
+        top: 70vh;
+        color: colors.$white;
+        width: 100%;
+
+        .animation-title {
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .animation-description {
+            width: 60vw;
+            margin: 0 auto;
+        }
+
+        .animation-count {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-size: 2em;
+            margin: 1em;
+        }
+    }
+}

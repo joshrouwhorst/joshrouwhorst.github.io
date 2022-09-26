@@ -1,0 +1,25 @@
+@use './vars';
+@use './utils.scss';
+@use './navigation';
+@use './new-template.scss';
+@use './main-template.scss';
+@use './music-template.scss';
+
+@use './pages/pages.scss';
+@use './pages/page404.scss';
+@use './pages/me.scss';
+@use './pages/music/main.scss';
+@use './pages/music/key-lookup.scss';
+@use './pages/music/key.scss';
+@use './pages/music/note.scss';
+@use './pages/music/chord.scss';
+@use './pages/ipsum/ipsum-main.scss';
+@use './pages/qbp/qbp-main.scss';
+
+@use './pages/animatedText/index.scss';
+
+@use './components/tag.scss';
+@use './components/expander.scss';
+@use './components/tech-specs.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@400;700&display=swap');

@@ -1,0 +1,73 @@
+@use 'sass:math';
+@use './colors.scss';
+
+@mixin colorSepHorizontal ($textColor, $color1, $color2, $color3, $distance) {
+    $doubleDistance: calc($distance * 2);
+    $halfDistance: calc($distance / 4);
+
+    @if ($distance > 0) {
+        text-shadow:
+            0 0 $halfDistance transparentize($textColor, 1),
+
+            calc(0px - $distance) 0 $halfDistance transparentize($color1, 0.5),
+            0 0 $halfDistance transparentize($color2, 0.5),
+            $distance 0 $halfDistance transparentize($color3, 0.5),
+
+            calc(0px - $doubleDistance) 0 $distance transparentize($color1, 0.75),
+            0 0 $distance transparentize($color2, 0.75),
+            $doubleDistance 0 $distance transparentize($color3, 0.75),
+    }
+
+    @else {
+        $distance: math.abs($distance);
+        text-shadow:
+            0 0 $distance transparentize($textColor, 0),
+
+            0 0 $distance transparentize($textColor, 0.5),
+            0 0 $distance transparentize($textColor, 0.5),
+            0 0 $distance transparentize($textColor, 0.5),
+
+            0 0 $distance transparentize($color1, 0.75),
+            0 0 $distance transparentize($color2, 0.75),
+            0 0 $distance transparentize($color3, 0.75),
+    }
+}
+
+$text: colors.$black;
+$clr1: colors.$neon-pink;
+$clr2: colors.$neon-yellow;
+$clr3: colors.$neon-blue;
+
+@keyframes colorSeparationHorizontal {
+    0% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    10% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, -5px);
+    }
+
+    20% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    25% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 10px);
+    }
+
+    40% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    50% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 60px);
+    }
+
+    75% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 0px);
+    }
+
+    100% {
+        @include colorSepHorizontal($text, $clr1, $clr2, $clr3, 0px);
+    }
+}

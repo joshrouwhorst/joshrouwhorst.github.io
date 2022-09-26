@@ -1,0 +1,78 @@
+@use '../../vars.scss';
+
+.qbp-main {
+    .update-outputs {
+        .col {
+            align-self: stretch;
+
+            .update-output {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.update-output {
+    border: 4px solid vars.$black;
+    border-radius: 0.5em;
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 1em;
+    align-self: center;
+
+    .title {
+        font-weight: bold;
+    }
+}
+
+.progress-bar {
+    position: relative;
+
+    &.complete {
+        .full-bar {
+            color: vars.$black;
+            font-weight: bold;
+            background-color: vars.$green;
+        }
+    }
+
+    .empty-bar,
+    .full-bar {
+        border-radius: 0.5em;
+    }
+
+    .empty-bar {
+        position: relative;
+        background-color: vars.$blue;
+    }
+
+    .full-bar {
+        color: vars.$white;
+        z-index: 200;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: vars.$red;
+        width: 100%;
+    }
+
+    .text {
+        position: relative;
+        padding: 0.5em;
+        text-align: center;
+    }
+}
+
+.qbp-main {
+    .record {
+        margin-bottom: 0.5em;
+    }
+
+    .status {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0.5em 0;
+        text-align: center;
+    }
+}

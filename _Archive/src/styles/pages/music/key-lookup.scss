@@ -1,0 +1,36 @@
+@use '../../vars.scss';
+
+.key-lookup {
+    header {
+        margin-bottom: 1em;
+    }
+
+    .switcher {
+        color: darken(vars.$blue, 5%);
+        cursor: pointer;
+
+        &:hover {
+            color: vars.$blue;
+        }
+    }
+
+    select {
+        background-color: vars.$white;
+        border: 0.2em solid vars.$black;
+        border-radius: vars.$borderRadius;
+        font-size: 1em;
+        line-height: 1em;
+        color: vars.$black;
+        cursor: pointer;
+        display: inline-block;
+        width: initial;
+        padding: 0;
+    }
+}
+
+.key-list {
+    .count {
+        font-weight: bold;
+        margin-top: 1em;
+    }
+}

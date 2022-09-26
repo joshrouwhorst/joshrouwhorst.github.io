@@ -1,0 +1,53 @@
+@import './colors.scss';
+
+@mixin autofocus-step ($distance, $spread, $alpha) {
+    text-shadow:
+        0 0 $spread rgba($black, $alpha),
+
+        0 ((-$distance) * 2) ($spread * 4) $neon-yellow,
+        0 (-$distance) $spread $neon-yellow,
+        0 0 ($spread * 2) $neon-yellow,
+
+        ((-$distance) * 2) ($distance * 2) ($spread * 4) $neon-blue,
+        (-$distance) ($distance) $spread $neon-blue,
+        -1px 1px ($spread * 2) $neon-blue,
+
+        ($distance * 2) ($distance * 2) ($spread * 4) $neon-pink,
+        $distance $distance $spread $neon-pink,
+        1px 1px ($spread * 2) $neon-pink;
+}
+
+$afNumOfSteps: 15;
+$afIncrement: calc(100 / $afNumOfSteps);
+$afRandomDiff: floor($afIncrement);
+
+@keyframes randomfocus {
+    @for $i from 1 through $afNumOfSteps {
+        $dist: random(30) * 1px;
+        $sprd: random(5) * 1px;
+        $alph: 1;
+        //$alph: (random(2) - 1);
+
+        @if $i ==$afNumOfSteps {
+
+            0%,
+            100% {
+                @include autofocus-step($dist, $sprd, $alph);
+            }
+        }
+
+        @else {
+            $thisIncrement: (random($afRandomDiff) - calc($afRandomDiff / 2));
+            $frame: ($afIncrement * calc($i - 1))+$thisIncrement;
+            $frame: $frame * 1%;
+
+            @if $frame < 0 {
+                $frame: 0%;
+            }
+
+            #{$frame} {
+                @include autofocus-step($dist, $sprd, $alph);
+            }
+        }
+    }
+}

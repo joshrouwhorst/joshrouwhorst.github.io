@@ -1,0 +1,210 @@
+@use './random-focus.scss';
+@use './box-glows.scss';
+@use './eighty-four.scss';
+@use './auto-focus.scss';
+@use './colors.scss';
+@use './color-separation.scss';
+@use './stranger-things.scss';
+@use './rainbow-fade.scss';
+@use './static.scss';
+
+@use 'sass:math';
+
+$rotateState: 'up';
+
+@mixin randomSpot {
+    $perc1: -#{percentage(calc(random(100) / 100))};
+    $perc2: -#{percentage(calc(random(100) / 100))};
+
+    left: $perc1;
+    top: $perc2;
+
+    @if $rotateState =='up' {
+        transform: rotate(0deg);
+        $rotateState: 'right';
+    }
+
+    @else if $rotateState =='right' {
+        transform: rotate(90deg);
+        $rotateState: 'down';
+    }
+
+    @else if $rotateState =='left' {
+        transform: rotate(180deg);
+        $rotateState: 'left';
+    }
+
+    @else {
+        transform: rotate(270deg);
+        $rotateState: 'up';
+    }
+}
+
+@keyframes grain {
+    0% {
+        @include randomSpot();
+    }
+
+    10% {
+        @include randomSpot();
+    }
+
+    30% {
+        @include randomSpot();
+    }
+
+    50% {
+        @include randomSpot();
+    }
+
+    70% {
+        @include randomSpot();
+    }
+
+    90% {
+        @include randomSpot();
+    }
+
+    100% {
+        @include randomSpot();
+    }
+}
+
+body.animatedtext {
+    font-family: 'Poppins', sans-serif;
+    background-color: colors.$black;
+    overflow: hidden;
+    position: relative;
+    transition: 0.2s;
+
+    &.white-background {
+        background-color: colors.$white;
+
+        .animation-info,
+        .nav {
+            color: colors.$black;
+
+            i:hover {
+                text-shadow: 0 0 3px colors.$black;
+            }
+        }
+    }
+
+    &.static {
+        .clickable .main-elem::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200vw;
+            height: 200vh;
+            background-image: static.$image;
+            animation: grain 1.5s steps(5) infinite;
+            opacity: 0.1;
+            display: block;
+            transform-origin: center;
+        }
+    }
+
+    #___gatsby {
+        overflow: hidden;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .eighty-four {
+        animation: eighty-four-repeat 10s ease 0s infinite normal;
+    }
+
+    .randomfocus {
+        animation: randomfocus 5s ease 0s infinite normal;
+    }
+
+    .autofocus {
+        animation: autofocus 3s ease-in-out 0s infinite normal;
+    }
+
+    .color-separation-horizontal {
+        animation: colorSeparationHorizontal 5s ease 0s infinite normal;
+    }
+
+    .stranger-things {
+        animation: strangerThings 5s linear 0s infinite normal;
+        color: transparent;
+    }
+
+    .rainbow-fade {
+        animation: rainbowFade 2s ease 0s infinite normal;
+    }
+
+    .next {
+        animation: next 15s ease 0s infinite normal;
+    }
+
+    .wrapper {
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    // START OVERLAY
+    .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2rem;
+        font-size: 1.5em;
+        z-index: 1000;
+        color: colors.$white;
+
+        i {
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.7;
+                color: transparent;
+                text-shadow: 0 0 1px colors.$white;
+            }
+        }
+    }
+
+    .title {
+        font-size: 8em;
+        text-align: center;
+        color: transparent;
+        font-weight: 900;
+        font-style: italic;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .animation-info {
+        position: absolute;
+        top: 70vh;
+        color: colors.$white;
+        width: 100%;
+
+        .animation-title {
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .animation-description {
+            width: 60vw;
+            margin: 0 auto;
+        }
+
+        .animation-count {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-size: 2em;
+            margin: 2rem;
+        }
+    }
+
+    // END OVERLAY
+}

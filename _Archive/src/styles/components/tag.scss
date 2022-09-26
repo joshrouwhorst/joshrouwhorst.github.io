@@ -1,0 +1,30 @@
+@use '../vars.scss';
+
+$borderRadius: vars.$borderRadius;
+
+.tag {
+    display: inline-block;
+    background-color: vars.$tagBg;
+    color: vars.$tagColor;
+    border: 0.2em solid vars.$tagColor;
+    border-radius: $borderRadius;
+    margin-right: 0.5em;
+
+    .text {
+        padding: 0.2em 1em;
+    }
+
+    .close {
+        padding: 0.2em 0.4em;
+        border-left: 0.1em solid vars.$tagColor;
+        margin-right: -0.1em; // Not sure why, but this seems to be necessary due to the border-left.
+        border-top-right-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+
+        &:hover {
+            background-color: vars.$tagColor;
+            color: vars.$tagBg;
+            cursor: pointer;
+        }
+    }
+}
