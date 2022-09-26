@@ -3,7 +3,7 @@ ordinal: "400"
 showInNav: true
 path: qbp
 title: qbp
-projectUrl: /qbp/main
+projectUrl: /qbp-package/main
 openInNewTab: false
 technologies: JavaScript, NodeJS
 ---
