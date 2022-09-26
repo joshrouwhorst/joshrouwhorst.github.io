@@ -17,8 +17,6 @@ title: About
 
 This site is part portfolio and part storage for little personal projects I've worked on.
 
-<div style="clear: both;"></div>
-
 ---
 
 ## Technical Experience
