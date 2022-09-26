@@ -190,6 +190,9 @@ const QbpMain = () => {
                         <p>
                             This demonstration shows some of the information you get when processing lists through qbp. Click "Run" to start a fake process of dummy records. Every time there is a change to a record qbp sends an update on the progress of the queue.
                         </p>
+                        <p>
+                            For more information, see the <a href="https://www.npmjs.com/package/qbp">NPM page</a>.
+                        </p>
                     </div>
                     <div className="row">
                         <div className="col">
