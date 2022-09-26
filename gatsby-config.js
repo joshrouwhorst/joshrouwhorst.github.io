@@ -59,13 +59,13 @@ const config = {
 };
 
 // This adds unneeded code to frontend and it's only needed running locally.
-if (process.env.NODE_ENV !== 'production') {
-    config.plugins.push({
-        resolve: "gatsby-plugin-netlify-cms",
-        options: {
-            modulePath: `${__dirname}/src/cms/cms.js`
-        }
-    })
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     config.plugins.push({
+//         resolve: "gatsby-plugin-netlify-cms",
+//         options: {
+//             modulePath: `${__dirname}/src/cms/cms.js`
+//         }
+//     })
+// }
 
 module.exports = config
