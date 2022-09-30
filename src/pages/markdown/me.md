@@ -13,6 +13,8 @@ title: About
 
 # About
 
-**Main Website >** [JoshRouwhorst.com ](https://www.joshrouwhorst.com)
+This site is part portfolio and part storage for little personal projects I've worked on. Click on a project and read a little about it, then click the Start button to see it in action.
 
-This site is part portfolio and part storage for little personal projects I've worked on.
+Check out my main site for more info.
+
+[JoshRouwhorst.com](https://www.joshrouwhorst.com)
