@@ -15,4 +15,4 @@ With qbp I can create a process that I can easily add items to, pause, resume, a
 
 I found with a little tweaking I could also have it handle rate limiting as well. So if I only want 100 records processed per minute I can easily specify that.
 
-The [NPM page](https://www.npmjs.com/package/qbp) has detailed information and examples for the package. Click the Start button to see a **basic** demo of this package in action.
+The [NPM page](https://www.npmjs.com/package/qbp) has detailed information and examples for the package. Click the Start button to see **a basic demo** of this package in action.

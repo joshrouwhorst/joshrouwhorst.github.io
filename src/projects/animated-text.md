@@ -11,4 +11,4 @@ These are some animation experiments I put together, mostly utilizing the `text
 
 Be sure to type your own text and click to cycle through animations.
 
-This is designed for desktop. It is very resource intensive for the browser.
+**This is designed for desktop. It is very resource intensive for the browser.**
