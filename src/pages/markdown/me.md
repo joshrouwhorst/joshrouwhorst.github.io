@@ -17,4 +17,4 @@ This site is part portfolio and part storage for little personal projects I've w
 
 Check out my main site for more info.
 
-[JoshRouwhorst.com](https://www.joshrouwhorst.com)
+[joshr.work](https://joshr.work)
